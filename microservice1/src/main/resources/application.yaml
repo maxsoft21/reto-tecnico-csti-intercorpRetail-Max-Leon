@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: microservice1
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:postgres14:5432}/${DB_DATABASE:dbtest}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:max123}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  kafka:
+    bootstrap-servers: kafka:29092
+    topic:
+      name: topic-microservicio1
+  rutaArchivo: /microservice1/xml
+server:
+  port: 9090
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      springframework:
+        data:
+          jpa:
+            repository:
+              query:
+                logger: DEBUG
+      apache:
+        kafka:
+          clients:
+            consumer: DEBUG
+            producer: DEBUG

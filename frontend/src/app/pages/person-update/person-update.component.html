@@ -1,0 +1,89 @@
+<div class="container py-4">
+  <div class="row">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center">LISTAR PERSON UPDATE</h2>
+          <div class="search-container">
+            <mat-form-field>
+              <input
+                matInput
+                (keyup)="filtrar($event)"
+                placeholder="Buscar Personas update"
+              />
+            </mat-form-field>
+          </div>
+          <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >ID</mat-header-cell
+              >
+              <mat-cell *matCellDef="let element">{{
+                element.id
+              }}</mat-cell> </ng-container
+            ><ng-container matColumnDef="firstname">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Firstname
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.firstname }}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="lastname">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Lastname
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element.lastname }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="city">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element.city }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="country">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element.country }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="firstname2">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                FirstName2
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.firstname2 }}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="lastname2">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                LastName2
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.lastname2 }}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="email">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
+            </ng-container>
+
+            <mat-header-row
+              *matHeaderRowDef="displayedColumns"
+            ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+
+          <mat-paginator
+            [pageSize]="5"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+          ></mat-paginator>
+
+          <div class="row py-4">
+            <div class="col-md-3">
+              <button class="btn btn-primary w-100 py-2" (click)="viewRoot()">
+                Listar Root
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
